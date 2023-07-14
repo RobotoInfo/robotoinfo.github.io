@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>ViniArg</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+crossorigin="anonymous">
+<style>
+body {
+  background-color: #282828;
+  color: #ffffff;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.card-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #2e2e2e;
+  border-radius: 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  background-color: #1c1c1c;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  height: 400px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-primary:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-danger {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-danger:hover {
+  background-color: #23272b;
+  border-color: #1d2124;
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilos para ocultar los botones */
+.edit-button,
+.delete-button,
+.new-button {
+  display: none;
+}
+</style>
+</head>
+<body>
+<header id="header">
+<!-- place navbar here -->
+</header>
+<main>
+<div id="app" class="container">
+<h1>Tienda de Vinilos</h1>
+<br>
+<!-- <a class="btn btn-primary" href="../templates/producto_nuevo.html">Nuevo</a> -->
+<br><br>
+<div v-if="error">
+<p>Lo sentimos, ........</p>
+</div>
+<div v-else>
+<section v-if="cargando">
+<div class="spinner-border"></div>
+<p>Cargando .....</p>
+</section>
+<section v-else>
+<div class="card-container">
+<div class="row">
+<div class="col-md-4" v-for="producto in productos">
+<div class="card" style="height: 600px; margin-top: 10px; margin-bottom: 10px;">
+<img class="card-img-top" :src="/img/+producto.imagen" :alt="producto.nombre">
+<div class="card-body">
+<h5 class="card-title">{{producto.nombre}}</h5>
+<h6 class="card-text">$ {{producto.precio}}</h6>
+<p class="card-text">Stock: {{producto.stock}}</p>
+<!-- <a class="btn btn-primary edit-button" :href="'./producto_update.html?id='+ producto.id" >Editar</a>
+<button type="button" class="btn btn-danger delete-button" v-on:click="eliminar(producto.id)" >Eliminar</button> -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer>
+<!-- place footer here -->
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/ujpbCx/TYkiZhlZB6+fzT"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+integrity="sha384-7VPbUDkoPSGFnVtYi0qXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+crossorigin="anonymous"></script>
+<script src="../js/main.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script><!--Link de VUE-->
+<script src="../js/productos.js"></script>
+</body>
+</html>
